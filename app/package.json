@@ -1,0 +1,73 @@
+{
+  "name": "HMMagicPocket",
+  "version": "3.5",
+  "author": "@kiic",
+  "description": "HMMagicPocket",
+  "license": "MPL-2.0",
+  "home": "https://kiic.top/",
+  "main": "./builds/main.js",
+  "devDependencies": {
+    "@electron/remote": "^2.0.8",
+    "@jitsi/robotjs": "^0.6.9",
+    "@nodelib/fs.walk": "^1.2.8",
+    "@nut-tree/nut-js": "^2.1.1",
+    "@spacek33z/iohook": "^0.10.2",
+    "@squoosh/lib": "^0.4.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/probe-image-size": "^7.0.1",
+    "@types/sharp": "^0.30.2",
+    "@types/superagent": "^4.1.14",
+    "autoprefixer": "^10.4.7",
+    "dayjs": "^1.10.7",
+    "electron-log": "^4.4.7",
+    "electron-rebuild": "^3.2.8",
+    "electron-store": "^8.0.1",
+    "ffi-cross": "^5.0.11",
+    "file-type": "^17.1.2",
+    "fs-extra": "^10.0.0",
+    "fswin": "^3.22.106",
+    "iconv-lite": "^0.6.3",
+    "image-size": "^1.0.1",
+    "nsfw": "^2.2.0",
+    "on-change": "^4.0.1",
+    "open": "^8.4.0",
+    "postcss": "^8.4.14",
+    "probe-image-size": "^7.2.3",
+    "sanitize-filename": "^1.6.3",
+    "sharp": "^0.30.6",
+    "superagent": "^7.0.2",
+    "systeminformation": "^5.11.16",
+    "tailwindcss": "^3.1.2",
+    "tdesign-vue-next": "^0.15.4",
+    "tippy.js": "^6.3.7",
+    "unused-filename": "^4.0.1",
+    "vue": "^3.2.36",
+    "zip-local": "^0.3.5"
+  },
+  "build": {
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "asar": true,
+    "appId": "com.kiic.HMtoolboxMagicpockets",
+    "copyright": "@kiic",
+    "productName": "HMMagicPocket",
+    "win": {
+      "icon": "./ico/ico.ico"
+    },
+    "directories": {
+      "output": "build"
+    },
+    "electronVersion": "18.3.2"
+  },
+  "dependencies": {
+    "@kmamal/sdl": "^0.3.6",
+    "@monaco-editor/loader": "^1.3.2",
+    "@xingrz/ffi-napi": "^4.1.0-alpha.1",
+    "electron": "^18.3.2",
+    "element-plus": "^2.2.11",
+    "fuse.js": "^6.6.2",
+    "hotcakey": "^0.8.0",
+    "monaco-editor": "^0.33.0"
+  }
+}

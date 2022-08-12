@@ -1,0 +1,227 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-04-18 16:07:06
+ * @LastEditTime: 2022-06-04 20:41:42
+ * @LastEditors: your name
+ * @Description: 
+ * @FilePath: \app\view\main\index.html
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HM神奇口袋</title>
+    <!-- <link rel="stylesheet" href="./Preset.css"> -->
+</head>
+
+<body>
+    <div class="chrome-tabs windrag" style="position: fixed;--tab-content-margin: 9px;left: 0px;top: 0px;">
+        <!-- <script src="./tab/index.js"></script> -->
+        <!-- <link rel="stylesheet" href="./tab/chrome-tabs.css"> -->
+        <div id="System_windrag" class="windrag"></div>
+        <div class="MenuSystem windrag" id="MenuSystem">
+            <div class="TopMume_Mume_All">
+                <!-- 右边的按钮组 -->
+                <div class="TopMumeBackgroundMume TopMumeBackgroundMumesize" style="display: none;" id="TopMume_relaunch">
+                    <i style="margin: 5px 0 0 0px;" class="gg-redo"></i>
+                </div>
+                <div class="TopMumeBackgroundMume TopMumeBackgroundMumesize" id="TopMume_Top">
+                    <i style="margin: 8px 0 0 0px;" class="gg-push-chevron-up"></i>
+                </div>
+                <div class="TopMumeBackgroundMume TopMumeBackgroundMumesize" 
+                    id="TopMume_Min">
+                    <i class="gg-math-minus"></i>
+                </div>
+                <div class="TopMumeBackgroundMume TopMumeBackgroundMumesize"
+                    id="TopMume_Max">
+                    <i class="gg-maximize popIn"></i>
+                </div>
+                <div class="TopMumeBackgroundMumeClose TopMumeBackgroundMumesize"
+                    id="TopMume_Close">
+                    <i class="gg-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="chrome-tabs-content"></div>
+        <div class="chrome-tabs-bottom-bar"></div>
+        <div class="chrome-tabs-optional-shadow-below-bottom-bar division"></div>
+
+    </div>
+    <!-- APP主界面 -->
+    <div id="app">
+        <div id="Sidebar">
+            <div place="顶部定位栏" class="SidebarSelectTop">
+                <!--顶部天气栏-->
+                <div class="Center">
+                    <!--选择地区--><i class="OptionButton Center"><img src="../../lib/src/Main/top-day.svg"></i>
+                </div>
+                <div class="info">
+                    <!--天气显示--><a class="state FonMi_M" v-text="Weathers.Temperature.lives[0].weather"></a><a
+                        class="city FonMi_N SedaFo_co"
+                        v-text="`${Weathers.Temperature.lives[0].province} ${Weathers.Temperature.lives[0].city}`"></a>
+                </div>
+                <div class="Center Select_INFO"><i class="msg" v-show="info.isMsg"></i>
+                    <!--消息按钮--><i class="OptionButton Center"><img src="../../lib/src/Main/top-info.svg"></i>
+                </div>
+            </div>
+            <div place="天气图片" class="Center hvr-wobble-horizontal WeatherPictureView">
+                <div class="View">
+                    <img class="MaxSize" :src="Weathers.WeatherTypesImages">
+                </div>
+            </div>
+            <div place="当前温度" class="NowTempMain">
+                <div class="NowTemp">
+                    <a v-text="Weathers.Temperature.lives[0].temperature" class="tempe FonPop_M"></a>
+                    <img style="margin-bottom: 3em;" src="../../lib/src/Main/TempeUnit.svg">
+                </div>
+                <div class="UpdateMain FonMi_R">
+                    <a v-text="Weathers.DiffUpdateTime" class="UpdateTime"></a>
+                    <a v-text="Weathers.UpdateTime" class="UpdateDate"></a>
+                </div>
+
+
+            </div>
+            <div place="三指标" class="Visualization">
+                <div v-for="(item, index) in Weathers.visual" class="Visual" :key="index">
+
+                    <a v-text="item.title" class="title"></a>
+                    <div class="Target_Text">
+                        <a v-text="item.info"></a>
+                        <a v-text="`.${item.point}`" v-if="item.point!==false"></a>
+                    </div>
+                    <i class="Selected popIn"></i>
+                </div>
+            </div>
+            <div place="导航条按钮" class="NavigationBarMain">
+                <div class="NavigationBar">
+                    <div v-for="(item, index) in NavigationBarList" @click="ShowNavigationBarButton(item, index)"
+                        :key="index" class=" Center ">
+                        <div class="NavigationBarButton Center">
+                            <img v-show="!item.show" :src="item.ico">
+                            <div v-show="item.show" class="ButtonBack popIn Center">
+                                <img :src="item.ico">
+                                <a class="FonMi_D Name" v-text="item.name"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="MianContent">
+            <div place="顶栏" class="NavHeader ExceHide">
+                <div place="问候语" class="AskHouMain MaxSize"  data-tippy-content="Tooltip">
+                    <a v-text="info.UsersName" class="UsersName FonMi_M"></a>
+                    <a v-text="info.AskHou" @mouseover="ShowAskHouSource" id="AskHou" class="AskHou FonMi_M" :style="`font-size: ${info.AskHou?.length>29?90:info.AskHou?.length>25?100:120}%;`"></a>
+                </div>
+                <div place="搜索框" class="SearchMain">
+                    <div class="icon MaxSize Center">
+                        <img src="../../lib/src/Main/Search.svg">
+                    </div>
+                    <input place="输入框" type="text" class="Search FonMi_R" :value="info.Search.value"
+                        :placeholder="info.Search.placeholder">
+                    <div place="设置按钮" class="SearchSetUP MaxSize Center">
+                        <i class="SplitLine"></i>
+                        <img class="icon" src="../../lib/src/Main/SearchSetUP.svg">
+                    </div>
+                </div>
+                <div place="头像" class="MaxSize Center Avatar">
+                    <div class="AvatarBackg">
+                        <img src="../../lib//src/Main/chevron-down.svg">
+                    </div>
+                    <div class="UsersHeadImg ExceHide">
+                        <img :src="info.UsersHeadImg" class="MaxSize">
+                    </div>
+                </div>
+
+            </div>
+            <div place="未来天气卡片" class="WeatherList">
+                <div class="Card" v-for="(CastsItem, index) in Weathers.Temperature.forecasts[0].casts" :key="index">
+                    <div class="PictureView Center">
+                        <div place="天气图" class="Picture hvr-wobble-horizontal">
+                            <img class="MaxSize" :src="GetWeathersCastsImaeg(CastsItem)">
+                        </div>
+                    </div>
+                    <div class="BottomInfo FonMi_R">
+                        <a place="时间 今天..." v-text="CastsItem.time" class="time "></a>
+                        <div class="TempList FonMi_M">
+                            <!-- 白天气温 -->
+                            <img src="../../lib/src/Main/day.svg">
+                            <a v-text="CastsItem.daytemp+'°C'"></a>
+                            <!-- 晚上气温 -->
+                            <img src="../../lib/src/Main/night.svg">
+                            <a v-text="CastsItem.nighttemp+'°C'"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div place="主要功能模块" class="hotMain">
+                <div place="临近事件/TOP功能/待办" class="TopFunMain">
+                        <div place="临近事件/TOP功能" class="LeaderBoard">
+                            <div place="TOP功能" class="TopFunction">
+                                <div class="FunCard"
+                                    v-for="(item, index) in [{name:'一键抠图',used:'39',},{name:'兼容测试',used:'404',}]"
+                                    :key="index">
+                                    <div class="CardIcon Center">
+                                        <img class="MaxSize" src="../../lib/src/Main/astronaut/astronaut-0.svg">
+                                    </div>
+                                    <a class="FonMi_D Name" v-text="item.name"></a>
+                                    <a class="info" v-text="`已用：${item.used}`"></a>
+                                </div>
+                            </div>
+                            <div class="Center MaxSize" place="临近事件--居中盒子">
+                                <div place="临近事件" class="NearNote">
+                                    <div class="NearCardText">
+                                        <a class="Title FonMi_M">{{info.Note.NearCard.title}}</a>
+                                        <a class="Info FonMi_N">{{info.Note.NearCard.info}}</a>
+                                    </div>
+                                    <div class="Center MaxSize">
+                                        <i class="Strips popIn"></i>
+                                        <img class="StripsImag popIn" src="../../lib/src/Main/Note/ToNote_2.svg">
+                                    </div>
+                                </div>
+    
+                        </div>
+                    </div>
+                  
+                    <div place="待办" class="MaxSize Center" style="justify-content: flex-start;">
+                        <div class="NoteMain Center">
+                            <div class="NoteMainView FonMi_M">
+                                <div class="AddNoteTitle"><a>AddNote.添加待办</a></div>
+                                    <div place="省缺图" class="AddNoteDefaultImaes Center">
+                                        <a v-show="info.Note.AddNoteEgg.date" class="AddNoteEgg-date FonPop_M">{{info.Note.AddNoteEgg.date}}</a>
+                                        <img class="StripsImag popIn" src="../../lib/src/Main/Note/AddNoteDefaultImaes.svg">
+                                    </div>
+                                    <div class="itme" :id="item.id" v-for="(item, index) in info.Note.AddNoteBtnList" :key="index">
+                                        <img v-if="index!==2" src="../../lib/src/Main/Note/Split.svg" class="Split">
+                                        <div class="IconMain Center">
+                                            <img :src="item.icon">
+                                        </div>
+                                        <div place="内容按钮" class="ItmeFuninfo">
+                                            <div class="title FonMi_M"><a>{{item.name}}</a></div>
+                                            <div class="info FonMi_M"><a>{{item.info}}</a></div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <link rel="stylesheet" href="./app.css">
+    <script src="./app"></script>
+    <link rel="stylesheet" href="./beautify.css">
+    <!-- <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../node_modules/tippy.js/dist/tippy.css">
+    <link rel="stylesheet" href="../../node_modules/tippy.js/themes/light-border.css">
+    <link rel="stylesheet" href="./beautify.css"> -->
+</body>
+
+</html>

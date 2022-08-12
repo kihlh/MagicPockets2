@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PhotoshopCli</title>
+    </head>
+    <body>
+        <div id="app">
+            <!--             <div id="nextBtnMain">
+                <div class="Backward">
+                    <img :src="" alt="">
+                </div>
+                <div class="Advance"></div>
+            </div> -->
+            <!--    主页面     -->
+            <div id="PhotoshopCli_Tool" v-show="Cli_ToolShow">
+          <div style="min-width: 100%; min-height: 25px; user-select: none; cursor: pointer;">
+              
+              <button onclick="Clip_PSD_To().then(console.log)" style="width: 50px; margin-left: 10px;height: 30px;margin-top: 21px;">转P</button>
+                            <button onclick="Clip_PSD_To('jpg').then(console.’og)" style="width: 50px; margin-left: 10px;height: 30px;margin-top: 21px;">转J</button>
+              <button onclick="clipPathMirrorToSave().then(console.log)" style=" width: 50px;
+    margin-left: 10px;
+    height: 30px;
+    margin-top: 21px;">镜像</button><button onclick="GenerateForDrew().then(console.log)" style=" width: 50px;
+    margin-left: 10px;
+    height: 30px;
+    margin-top: 21px;">DNA</button><button onclick="Clip_To_Link().then(console.log)" style=" width: 50px;
+    margin-left: 10px;
+    height: 30px;
+    margin-top: 21px;">Link</button></div>
+                <div class="Top_BtnList">
+                    <div class="Btn" @click="item.click($Event,item)" v-for="(item, index) in TopBtn" :key="index">
+                        <div class="Icon" :style="`background: ${item.color};`">
+                            <div :class="item.icon"></div>
+                        </div>
+                        <a class="Name">{{item.name}}</a>
+                    </div>
+                </div>
+                <div class="MainFunctions" v-show="item.Select" v-for="(item, index) in MainFunctions">
+                    <div :style="{ padding: '11px', background: 'var(--bg-color-page)', borderRadius: '3px' }">
+                        <t-menu @change="MainFunctionsChange" width="100%" height="399px" style="height: 399px;">
+                            <t-menu-item @contextmenu=contextmenuMenuFunctionsValue(FroMenu,item.FunctionList,item) @click="SelectMenuFunctionsValue(FroMenu,item.FunctionList,item)" v-for="(FroMenu, index) in item.FunctionList" :key="index" :value="index" v-show="!item.hide">
+                                <template #icon>
+                                    <t-icon name="app"/>
+                                </template>
+                                {{FroMenu.name}}
+                    
+                        
+                            
+                            
+                            </t-menu-item>
+                        </t-menu>
+                    </div>
+                </div>
+                <div class="EndFooter">
+                    <div v-for="(item, index) in MainFunctions" @click="ClickMainFunctions(item,$Event)" :class="item.Select?'BtnSelect Btn':'Btn'" :key="index">
+                        <div class="Btns">
+                            <a>{{item.name}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="___Top_prompt" v-show="Top_prompt">
+                    <div class="_EvalPhotoshopScript">
+                        <t-textarea placeholder="请输入内容" v-model="Top_prompt_model"/>
+                    </div>
+                    <div class="btn" style="position: absolute;bottom: 260px;">
+                        <t-button theme="danger" @click="Top_prompt=false">取消 </t-button>
+                        <t-button theme="primary" @click="Top_prompt_modelClick" style="margin: 5px;">{{SelectMenuFunctions?"确定":"运行"}} </t-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="appNext"></div>
+        <link rel="stylesheet" href="./app.css">
+        <script src="./app"></script>
+    </body>
+</html>

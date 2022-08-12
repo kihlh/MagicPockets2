@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ntfs = exports.ejectDriveSync = exports.ejectDrive = exports.setAttributesSync = exports.setAttributes = exports.getAttributesSync = exports.getAttributes = exports.setVolumeLabelSync = exports.setVolumeLabel = exports.getVolumeSpaceSync = exports.getVolumeSpace = exports.getVolumeInformationSync = exports.getVolumeInformation = exports.getStoragePropertiesSync = exports.getStorageProperties = exports.getDeviceCapabilitiesSync = exports.getDeviceCapabilities = exports.getDriveDeviceSync = exports.getDriveDevice = exports.getLogicalDriveListSync = exports.getLogicalDriveList = exports.findSync = exports.find = exports.convertPathSync = exports.convertPath = exports.splitPath = exports.dirWatcher = exports.version = exports.fswin = void 0;
+//  * @ https://github.com/xxoo/node-fswin/wiki
+// 兼容electron 配合esBuild打包
+let BinPath = process?.resourcesPath ? `${process?.resourcesPath}/bin/fswin.node` : `./${process.arch}/fswin.node`;
+let fswin = process.platform === "win32" ? require(BinPath) : null;
+exports.fswin = fswin;
+if (!fswin)
+    throw new Error("The current environment cannot complete the initialization");
+exports.default = fswin;
+exports.version = fswin.version, exports.dirWatcher = fswin.dirWatcher, exports.splitPath = fswin.splitPath, exports.convertPath = fswin.convertPath, exports.convertPathSync = fswin.convertPathSync, exports.find = fswin.find, exports.findSync = fswin.findSync, exports.getLogicalDriveList = fswin.getLogicalDriveList, exports.getLogicalDriveListSync = fswin.getLogicalDriveListSync, exports.getDriveDevice = fswin.getDriveDevice, exports.getDriveDeviceSync = fswin.getDriveDeviceSync, exports.getDeviceCapabilities = fswin.getDeviceCapabilities, exports.getDeviceCapabilitiesSync = fswin.getDeviceCapabilitiesSync, exports.getStorageProperties = fswin.getStorageProperties, exports.getStoragePropertiesSync = fswin.getStoragePropertiesSync, exports.getVolumeInformation = fswin.getVolumeInformation, exports.getVolumeInformationSync = fswin.getVolumeInformationSync, exports.getVolumeSpace = fswin.getVolumeSpace, exports.getVolumeSpaceSync = fswin.getVolumeSpaceSync, exports.setVolumeLabel = fswin.setVolumeLabel, exports.setVolumeLabelSync = fswin.setVolumeLabelSync, exports.getAttributes = fswin.getAttributes, exports.getAttributesSync = fswin.getAttributesSync, exports.setAttributes = fswin.setAttributes, exports.setAttributesSync = fswin.setAttributesSync, exports.ejectDrive = fswin.ejectDrive, exports.ejectDriveSync = fswin.ejectDriveSync, exports.ntfs = fswin.ntfs;
+//# sourceMappingURL=fswin.js.map

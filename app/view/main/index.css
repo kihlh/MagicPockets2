@@ -1,0 +1,765 @@
+@charset "UTF-8";
+
+/* 网格化页面布局 */
+#app {
+    display: grid;
+    grid-template-columns: 1.9fr 5fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/* 侧边栏 */
+#Sidebar {
+    background: rgba(255, 255, 255, 1);
+    border-right: 2px solid #00000008;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1.3fr 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    /* height: calc(100vh - var(--StatusBarHeight)); */
+}
+
+/* 主页面内容 */
+#MianContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.2fr 3.6fr 6fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/* 未来天气卡片 */
+.WeatherList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 0px;
+    justify-items: start;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f6f6f899;
+    align-content: center;
+    border-top: 10px solid #fafafb;
+    border-bottom: 10px solid #fafafb;
+}
+
+.WeatherList .Card {
+    background-color: #FFF;
+    border-radius: 12px;
+    height: 210px;
+    overflow: hidden;
+    min-width: 145px;
+    max-width: 250px;
+    border: 1px solid #E1E1E1;
+    width: 90%;
+    margin: 0 0 0 10px;
+}
+
+.PictureView {
+    width: 100%;
+    height: 77%;
+    position: relative;
+}
+
+/* 居中 */
+.Center {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 最大化图片宽高 */
+.MaxSize {
+    width: 100%;
+    height: 100%;
+}
+
+/* 设置天气图标统一值 */
+.WeatherList .Picture {
+    /* min-width: 95px; */
+    /* max-width: 150px; */
+    /* width: 70%; */
+
+    /* min-height: 60px; */
+    /* max-height: 150px; */
+    height: 66%;
+}
+
+/* 卡片-底部文字 */
+.BottomInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+/* 小米MiSans */
+.MiSans_R {
+    font-family: "MiSans-Regular";
+}
+
+.TempList {
+    display: flex;
+    color: blanchedalmond;
+}
+
+/* 底部小字 */
+.TempList a {
+    color: rgb(71 71 71 / 81%);
+    font-size: 0.8em;
+    padding: 0 15px 0 2px;
+}
+
+/* 底部日期(今明后天...) */
+.BottomInfo .time {
+    margin-top: -7px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    -webkit-font-smoothing: initial;
+    color: #999999;
+}
+
+/* 定位 */
+.SidebarSelectTop {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    min-height: 65px;
+    width: 100%;
+}
+
+/* 顶部两颗按钮 */
+.OptionButton {
+    max-width: 50px;
+    max-height: 50px;
+    width: 80%;
+    height: 80%;
+    min-width: 30px;
+    min-height: 30px;
+    background: #F6F6F8;
+    border-radius: 50em;
+    cursor: pointer;
+}
+
+.OptionButton:hover {
+    box-shadow: inset 0px -1px 4px rgba(0, 0, 0, 0.11);
+}
+
+.OptionButton:active {
+    box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.11);
+}
+
+/*                                                                                                                                                                                                                                                 */
+#Sidebar .info {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#Sidebar .state {
+    font-size: 1.3em;
+}
+
+#Sidebar .city {
+    color: #B2B6B6;
+    font-size: 0.8em;
+}
+
+/* 有新的消息 */
+.Select_INFO .msg {
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    background: #FF7A40;
+    border-radius: 50%;
+    right: 32%;
+    top: 37%;
+}
+
+.Select_INFO {
+    position: relative;
+}
+
+/* 天气图片 */
+.WeatherPictureView {
+    width: 100%;
+    height: 223px;
+}
+
+.WeatherPictureView .View {
+    width: 60%;
+    max-width: 230px;
+    height: auto;
+}
+
+/* 当前温度 */
+.NowTemp .tempe {
+    font-size: 68px;
+    color: #474747;
+}
+
+/* 当前温度 */
+.NowTemp {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 相对时间 */
+.UpdateMain {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    margin-top: -29px;
+    font-size: 15px;
+    color: #b2b6b6;
+}
+
+.UpdateTime {
+    padding-right: 5px;
+}
+
+/* 顶部栏 */
+.NavHeader {
+    min-height: 75px;
+    max-height: 80px;
+    display: grid;
+    grid-template-columns: 5fr 3.5fr 1.2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-content: center;
+    align-items: center;
+}
+
+/* 数据可视化 三指标 */
+.Visualization {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: var(--TargetFeel-grid-column-gap);
+    grid-row-gap: 0px;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+/* 数据可视化 三指标-个体 */
+.Visualization .Visual {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    box-shadow: inset 0px -2px 4px rgba(0, 0, 0, 0.11);
+    border-radius: 17px;
+    width: 80px;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr 0.8fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+/* 底部显示 */
+.Visualization .Selected {
+    display: none;
+    width: 19px;
+    height: 2px;
+    background: #738DE0;
+    border-radius: 44px;
+}
+
+/* 底部悬浮显示已选 */
+.Visual:hover .Selected {
+    display: initial;
+}
+
+/* 标题 */
+.Visualization .Visual .title {
+    width: 30px;
+    height: 20px;
+    font-size: 13.5px;
+    color: #666666;
+    margin: 7px 25px 0 5px;
+}
+
+/* 主内容 */
+.Visualization .Visual .Target_Text {
+    font-size: 22px;
+    line-height: 37px;
+    color: #666666;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/*导航条按钮 盒子*/
+.NavigationBarMain {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavigationBarMain * {
+    user-select: none
+}
+
+/*导航条按钮 布局*/
+.NavigationBar {
+    width: 95%;
+    height: 82px;
+    bottom: 70px;
+    background: #FFFFFF;
+    border: 1px solid #F5F5F5;
+    box-sizing: border-box;
+    box-shadow: inset 0px -2px 4px rgba(0, 0, 0, 0.23);
+    border-radius: 19px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+    padding: 0 20px 0 20px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+/*导航条按钮 按钮*/
+.NavigationBarButton {
+    cursor: pointer;
+    width: 80px;
+    height: 45px;
+    border-radius: 14px;
+}
+
+/* 按钮背景 */
+.ButtonBack {
+    background: linear-gradient(131.46deg, #F6F7FB 2.97%, rgba(246, 247, 251, 0.66) 150.02%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
+    color: #adbbcf;
+    width: 100%;
+    border-radius: 14px;
+    height: 100%;
+}
+
+/* 溢出隐藏 */
+.ExceHide {
+    overflow: hidden;
+}
+
+/* 头像 */
+.NavHeader .UsersHeadImg {
+    width: 45px;
+    height: 45px;
+    border-radius: 9px;
+}
+
+.Avatar:hover .AvatarBackg {
+    display: block;
+}
+
+.Avatar {
+    cursor: pointer;
+
+}
+
+.NavHeader .AvatarBackg {
+    cursor: pointer;
+    width: 54px;
+    height: 45px;
+    background: #0000000d;
+    position: absolute;
+    z-index: -1;
+    right: 9px;
+    border-radius: 9px;
+    display: none;
+}
+
+.NavHeader .AvatarBackg img {
+    cursor: pointer;
+    width: 25px;
+    margin-left: 29px;
+    margin-top: 9px;
+    opacity: 0.6;
+}
+
+/* 提示语 */
+.NavHeader .AskHou {
+    color: rgba(158, 174, 198, 1);
+    letter-spacing: 1.05px;
+    font-size: 120%;
+    cursor: pointer;
+    width: 95% !important;
+}
+
+/* 用户名/问候的用户 */
+.NavHeader .UsersName {
+    color: rgba(150, 150, 150, 1);
+    letter-spacing: 0.85px;
+    font-size: 17px;
+    padding-bottom: 3px;
+}
+
+.NavHeader .AskHouMain {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    justify-content: center;
+}
+
+/* 搜索 */
+.SearchMain {
+    width: 100%;
+    height: 50px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(246, 246, 248, 1);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1.5fr 3fr 1.6fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/* 搜索框 input */
+.SearchMain .Search {
+    background: none;
+    outline: none;
+    border-width: 0px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #606266;
+}
+
+.SearchMain .Search:focus {
+    outline: none;
+}
+
+.SearchMain .Search::-webkit-input-placeholder {
+    color: #DDDADA;
+}
+
+.SearchMain .icon {
+    margin-right: -9px;
+}
+
+.SearchSetUP .SplitLine {
+    width: 1px;
+    height: 20px;
+    background: #DDDADA;
+    margin-right: 3px;
+}
+
+.SearchSetUP {
+    cursor: pointer;
+}
+
+.NavigationBarButton .Name {
+    margin-left: 2px;
+}
+
+/* 主要功能界面 */
+.hotMain {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* top2 & Note */
+.LeaderBoard {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding: 0 15px 0 0;
+}
+
+.TopFunMain {
+    display: grid;
+    grid-template-columns: 1.5fr 2.6fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.TopFunMain {
+    height: 381px;
+    width: 100%;
+}
+
+/* 高用量功能 */
+.TopFunction {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    margin-left: 5%;
+}
+
+/*高用量功能 卡片  */
+.TopFunction .FunCard {
+    user-select: none;
+    width: 90%;
+    height: 209px;
+    background: #FFFFFF;
+    border: 1px solid #E0E4E4;
+    box-sizing: border-box;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1.2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+/* 图片 */
+.FunCard .CardIcon {
+    width: 70px;
+    height: 69px;
+    background: #FFFFFF;
+    border: 10px solid #F4F7F8;
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+
+.CardIcon img {
+    width: 25px;
+    height: auto;
+}
+
+.FunCard:hover,
+.NearNote:hover {
+    border: 1px solid #adbbcfad;
+    cursor: pointer;
+}
+
+.FunCard:active,
+.NearNote:active {
+    box-shadow: inset -16px 16px 32px #f5f5f5, inset 16px -16px 32px #ffffff;
+}
+
+/* 高用量功能 卡片 标题 */
+.FunCard .Name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    color: #474747ad
+}
+
+/* 高用量功能 卡片 用量 */
+.FunCard .info {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    color: rgba(71, 71, 71, 0.3);
+}
+
+/* 临近代办 */
+.NearNote {
+    display: grid;
+    grid-template-columns: 6.5fr 1fr;
+    width: 93%;
+    height: 101%;
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #E0E4E4;
+    margin-left: 5%;
+}
+
+/* 装饰条 浮动变成前进 */
+.NearNote .Strips {
+    width: 6px;
+    height: 39px;
+    background: #738DE0;
+    border-radius: 20px;
+}
+
+.NearNote .StripsImag {
+    height: 39px;
+    display: none;
+}
+
+.NearNote:hover .StripsImag {
+    display: inline;
+}
+
+.NearNote:hover .Strips {
+    display: none;
+}
+
+/* 临近代办 文本 */
+.NearNote .NearCardText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 22px;
+}
+
+/* 临近代办 文本 */
+.NearCardText .Title {
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #474747;
+}
+
+/* 临近代办 文本 */
+.NearCardText .Info {
+    font-size: 13.9px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    color: #B0B0B0;
+    margin-top: 5px;
+}
+
+/* 待办 */
+.NoteMain {
+    width: 95%;
+    height: calc(100% - 19px);
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #E0E4E4;
+    margin-bottom: -21px;
+}
+
+
+.NoteMainView {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 3.5fr 3fr 0fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 85%;
+    height: 85%;
+    position: relative;
+}
+
+.AddNoteTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #474747;
+}
+
+.AddNoteDefaultImaes {
+    position: absolute;
+    width: 290px;
+    height: 90%;
+    top: 20px;
+    right: -10px;
+}
+
+/* 图标 */
+.NoteMainView .IconMain {
+    width: 52px;
+    height: 52px;
+    left: 0px;
+    top: 0px;
+    border-radius: 72px;
+    /* border: 1px solid #E1E1E1;*/
+}
+
+/* 默认卡三按钮 */
+.NoteMainView #AddNoteBtn .IconMain {
+    background: rgba(255, 182, 43, 0.55);
+}
+
+.NoteMainView #remindBtn .IconMain {
+    background: #C6DAFF;
+}
+
+.NoteMainView #SkyChangeBtn .IconMain {
+    background: rgba(46, 173, 115, 0.83);
+}
+
+.NoteMainView .itme {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.itme .ItmeFuninfo {
+
+    margin-left: 10px;
+}
+
+.itme .info {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.05em;
+    color: #989BA2;
+}
+
+.itme .title {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    color: #474747;
+
+    padding-bottom: 2px;
+}
+
+.itme .Split {
+    position: absolute;
+    bottom: 0px;
+}
+
+.AddNoteEgg-date {
+    color: #738de0;
+    right: 48px;
+    position: absolute;
+    top: 64px;
+    font-size: 12px;
+}
+

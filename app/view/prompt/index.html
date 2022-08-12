@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body class="Center">
+        <div id="app">
+            <a id="title" class="FonMi_M">HM神奇口袋</a>
+            <textarea id="data" class="FonMi_M" placeholder="请输入..."></textarea>
+            <button class="FonMi_M" id="yes">确定</button>
+            <button class="FonMi_M" id="no">取消</button>
+        </div>
+
+        <style>
+            button {
+                width: 84px;
+                height: 35px;
+                border-radius: 4px;
+                cursor: pointer;
+                bottom: 20px;
+                font-size: 16px;
+                -webkit-app-region: no-drag;
+
+            }
+
+            #no {
+                position: absolute;
+                right: 19px;
+                background: rgba(255, 255, 255, 1);
+                border: 1px solid rgba(222, 222, 222, 1);
+                color:rgba(90, 103, 147, 1);
+            }
+            #no:hover{
+                background:rgb(243 243 243);
+            }
+            #yes {
+                position: absolute;
+                right: 118px;
+                background: rgba(70, 144, 247, 1);
+                border: none;
+                color: rgb(255 255 255);
+            }
+            #yes:hover{
+                background: rgb(68 137 233)
+            }
+            #data {
+                color: rgba(90, 103, 147, 1);
+                font-size: 16px;
+                font-weight: 400;
+                border-radius: 8px;
+                width: 323px;
+                max-height: 19px;
+                border: 1px solid rgba(198, 204, 224, 1);
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 16px 16px 16px 16px;
+                position: absolute;
+                left: 20px;
+                top: 54px;
+            }
+
+            .Center {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            body {
+                margin: 0em;
+                overflow: hidden;
+            }
+
+            #title {
+                color: rgba(90, 103, 147, 1);
+                font-size: 18px;
+                line-height: 36.45px;
+                font-weight: 500;
+                left: 23px;
+                top: 12px;
+                position: absolute;
+            }
+
+            #app {
+                background: rgba(255, 255, 255, 1);
+                width: 99vw;
+                height: 99vh;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                align-content: flex-start;
+                align-items: flex-start;
+                justify-content: flex-start;
+                -webkit-app-region: drag;
+            }
+
+
+            a, h1, h2, h3, h4, p {
+                -webkit-font-smoothing: subpixel-antialiased;
+            }
+
+            a, svg, img, i {
+                -webkit-user-drag: none;
+                user-select: none;
+               
+            }
+
+            /* MiSans-Medium.ttf */
+            @font-face {
+                font-family: 'MiSans-Medium';
+                src: url('F:/MagicPockets/lib/fonts.asar/MiSans-Medium-Min.ttf');
+            }
+
+            .FonMi_M {
+                font-family: "MiSans-Medium";
+                font-smooth: never;
+            }
+
+            :focus-visible {
+                outline: #FBDCB0 none 1px;
+            }
+
+            textarea {
+                resize: none;
+                overflow: hidden;
+                -webkit-app-region: no-drag;
+            }
+
+            button:focus-visible {
+                outline: none
+            }
+        </style>
+    </body>
+</html>

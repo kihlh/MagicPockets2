@@ -1,0 +1,108 @@
+{
+  "name": "@spacek33z/iohook",
+  "version": "0.10.2",
+  "description": "Node.js global keyboard and mouse hook",
+  "author": "Aloyan Dmitry",
+  "license": "MIT",
+  "homepage": "https://github.com/SpaceK33z/iohook",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpaceK33z/iohook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SpaceK33z/iohook/issues"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "install": "node install.js",
+    "build": "node build.js --upload=false",
+    "build:ci": "node build.js --all",
+    "build:print": "node -e 'require(\"./helpers\").printManualBuildParams()'",
+    "test": "jest",
+    "lint:dry": "eslint --ignore-path .lintignore .",
+    "lint:fix": "eslint --ignore-path .lintignore --fix . && prettier --ignore-path .lintignore --write .",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "npm run docs:build && gh-pages -d docs/.vuepress/dist/"
+  },
+  "keywords": [
+    "hook",
+    "electron",
+    "nw.js",
+    "listener",
+    "mousemove",
+    "keypress",
+    "keyup",
+    "global keypress",
+    "shortcut"
+  ],
+  "lint-staged": {
+    "examples/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "docs/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "test/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "nugget": "^2.0.1",
+    "pump": "^1.0.3",
+    "rc": "^1.2.8",
+    "tar-fs": "^1.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.62",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-only-warn": "^1.0.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "fs-extra": "^9.0.1",
+    "gh-pages": "^3.2.0",
+    "htmlhint": "^0.15.1",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
+    "minimist": "^1.2.5",
+    "nan": "^2.15.0",
+    "node-abi": "^2.19.3",
+    "node-gyp": "^9.0.0",
+    "prebuild": "^10.0.1",
+    "prettier": "^2.3.1",
+    "robotjs": "^0.6.0",
+    "tar": "^6.0.5",
+    "vuepress": "^1.7.1"
+  },
+  "supportedTargets": [
+    [
+      "node",
+      "16.0.0",
+      "93"
+    ],
+    [
+      "electron",
+      "17.0.0",
+      "101"
+    ],
+    [
+      "electron",
+      "18.0.0",
+      "103"
+    ]
+  ]
+}

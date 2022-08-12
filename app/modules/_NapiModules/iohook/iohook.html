@@ -1,0 +1,1370 @@
+<html lang="auto" style="height:100%" class=""><!--
+  Page saved with SingleFile 
+  url: https://wilix-team.github.io/iohook/usage.html#generic-node-application 
+  saved date: Tue Jun 14 2022 01:38:02 GMT+0800 (中国标准时间)
+ --><head><meta charset="utf-8">
+ <title>iohook | iohook</title>
+ <style>
+   pre[class*=language-] {
+     color: #ccc;
+     font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+     font-size: 1em;
+     text-align: left;
+     white-space: pre;
+     word-spacing: normal;
+     word-break: normal;
+     word-wrap: normal;
+     -moz-tab-size: 4;
+     -o-tab-size: 4;
+     tab-size: 4;
+     -webkit-hyphens: none;
+     -ms-hyphens: none;
+     hyphens: none
+   }
+ 
+   .token.comment {
+     color: #999
+   }
+ 
+   .token.punctuation {
+     color: #ccc
+   }
+ 
+   .token.boolean,
+   .token.function,
+   .token.number {
+     color: #f08d49
+   }
+ 
+   .token.property {
+     color: #f8c555
+   }
+ 
+   .token.keyword {
+     color: #cc99cd
+   }
+ 
+   .token.string {
+     color: #7ec699
+   }
+ 
+   .token.operator {
+     color: #67cdcc
+   }
+ 
+   .theme-default-content code {
+     color: #476582;
+     padding: .25rem .5rem;
+     margin: 0;
+     font-size: .85em;
+     background-color: rgba(27, 31, 35, .05);
+     border-radius: 3px
+   }
+ 
+   .theme-default-content pre[class*=language-] {
+     line-height: 1.4;
+     padding: 1.25rem 1.5rem;
+     margin: .85rem 0;
+     background-color: #282c34;
+     border-radius: 6px;
+     overflow: auto
+   }
+ 
+   .theme-default-content pre[class*=language-] code {
+     color: #fff;
+     padding: 0;
+     background-color: transparent;
+     border-radius: 0
+   }
+ 
+   div[class*=language-] {
+     position: relative;
+     background-color: #282c34;
+     border-radius: 6px
+   }
+ 
+   div[class*=language-] pre[class*=language-] {
+     background: transparent;
+     position: relative;
+     z-index: 1
+   }
+ 
+   div[class*=language-]:before {
+     position: absolute;
+     z-index: 3;
+     top: .8em;
+     right: 1em;
+     font-size: .75rem;
+     color: hsla(0, 0%, 100%, .4)
+   }
+ 
+   div[class~=language-js]:before {
+     content: "js"
+   }
+ 
+   div[class~=language-javascript]:before {
+     content: "js"
+   }
+ 
+   div[class~=language-json]:before {
+     content: "json"
+   }
+ 
+   .custom-block .custom-block-title {
+     font-weight: 600;
+     margin-bottom: -.4rem
+   }
+ 
+   .custom-block.tip {
+     padding: .1rem 1.5rem;
+     border-left-width: .5rem;
+     border-left-style: solid;
+     margin: 1rem 0
+   }
+ 
+   .custom-block.tip {
+     background-color: #f3f5f7;
+     border-color: #42b983
+   }
+ 
+   .theme-default-content:not(.custom) {
+     max-width: 740px;
+     margin: 0 auto;
+     padding: 2rem 2.5rem
+   }
+ 
+   @media (max-width:959px) {
+     .theme-default-content:not(.custom) {
+       padding: 2rem
+     }
+   }
+ 
+   @media (max-width:419px) {
+     .theme-default-content:not(.custom) {
+       padding: 1.5rem
+     }
+   }
+ 
+   body,
+   html {
+     padding: 0;
+     margin: 0;
+     background-color: #fff
+   }
+ 
+   body {
+     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     font-size: 16px;
+     color: #2c3e50
+   }
+ 
+   .page {
+     padding-left: 20rem
+   }
+ 
+   .navbar {
+     z-index: 20;
+     right: 0;
+     height: 3.6rem;
+     background-color: #fff;
+     box-sizing: border-box;
+     border-bottom: 1px solid #eaecef
+   }
+ 
+   .navbar {
+     position: fixed;
+     top: 0;
+     left: 0
+   }
+ 
+   .sidebar {
+     font-size: 16px;
+     background-color: #fff;
+     width: 20rem;
+     position: fixed;
+     z-index: 10;
+     margin: 0;
+     top: 3.6rem;
+     left: 0;
+     bottom: 0;
+     box-sizing: border-box;
+     border-right: 1px solid #eaecef;
+     overflow-y: auto
+   }
+ 
+   .theme-default-content:not(.custom)>:first-child {
+     margin-top: 3.6rem
+   }
+ 
+   .theme-default-content:not(.custom) a:hover {
+     text-decoration: underline
+   }
+ 
+   a {
+     font-weight: 500;
+     text-decoration: none
+   }
+ 
+   a {
+     color: #3eaf7c
+   }
+ 
+   ul {
+     padding-left: 1.2em
+   }
+ 
+   h1,
+   h2,
+   h3 {
+     font-weight: 600;
+     line-height: 1.25
+   }
+ 
+   .theme-default-content:not(.custom)>h1,
+   .theme-default-content:not(.custom)>h2,
+   .theme-default-content:not(.custom)>h3,
+   .theme-default-content:not(.custom)>h4,
+   .theme-default-content:not(.custom)>h5,
+   .theme-default-content:not(.custom)>h6 {
+     margin-top: -3.1rem;
+     padding-top: 4.6rem;
+     margin-bottom: 0
+   }
+ 
+   .theme-default-content:not(.custom)>h1:first-child,
+   .theme-default-content:not(.custom)>h2:first-child,
+   .theme-default-content:not(.custom)>h3:first-child,
+   .theme-default-content:not(.custom)>h4:first-child,
+   .theme-default-content:not(.custom)>h5:first-child,
+   .theme-default-content:not(.custom)>h6:first-child {
+     margin-top: -1.5rem;
+     margin-bottom: 1rem
+   }
+ 
+   .theme-default-content:not(.custom)>h1:first-child+.custom-block,
+   .theme-default-content:not(.custom)>h1:first-child+p,
+   .theme-default-content:not(.custom)>h1:first-child+pre,
+   .theme-default-content:not(.custom)>h2:first-child+.custom-block,
+   .theme-default-content:not(.custom)>h2:first-child+p,
+   .theme-default-content:not(.custom)>h2:first-child+pre,
+   .theme-default-content:not(.custom)>h3:first-child+.custom-block,
+   .theme-default-content:not(.custom)>h3:first-child+p,
+   .theme-default-content:not(.custom)>h3:first-child+pre,
+   .theme-default-content:not(.custom)>h4:first-child+.custom-block,
+   .theme-default-content:not(.custom)>h4:first-child+p,
+   .theme-default-content:not(.custom)>h4:first-child+pre,
+   .theme-default-content:not(.custom)>h5:first-child+.custom-block,
+   .theme-default-content:not(.custom)>h5:first-child+p,
+   .theme-default-content:not(.custom)>h5:first-child+pre,
+   .theme-default-content:not(.custom)>h6:first-child+.custom-block,
+   .theme-default-content:not(.custom)>h6:first-child+p,
+   .theme-default-content:not(.custom)>h6:first-child+pre {
+     margin-top: 2rem
+   }
+ 
+   h1:hover .header-anchor,
+   h2:hover .header-anchor,
+   h3:hover .header-anchor,
+   h4:hover .header-anchor,
+   h5:hover .header-anchor,
+   h6:hover .header-anchor {
+     opacity: 1
+   }
+ 
+   h1 {
+     font-size: 2.2rem
+   }
+ 
+   h2 {
+     font-size: 1.65rem;
+     padding-bottom: .3rem;
+     border-bottom: 1px solid #eaecef
+   }
+ 
+   h3 {
+     font-size: 1.35rem
+   }
+ 
+   a.header-anchor {
+     font-size: .85em;
+     float: left;
+     margin-left: -.87em;
+     padding-right: .23em;
+     margin-top: .125em;
+     opacity: 0
+   }
+ 
+   a.header-anchor:hover {
+     text-decoration: none
+   }
+ 
+   code {
+     font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
+   }
+ 
+   p,
+   ul {
+     line-height: 1.7
+   }
+ 
+   @media (max-width:959px) {
+     .sidebar {
+       font-size: 15px;
+       width: 16.4rem
+     }
+ 
+     .page {
+       padding-left: 16.4rem
+     }
+   }
+ 
+   @media (max-width:719px) {
+     .sidebar {
+       top: 0;
+       padding-top: 3.6rem;
+       transform: translateX(-100%);
+       transition: transform .2s ease
+     }
+ 
+     .page {
+       padding-left: 0
+     }
+   }
+ 
+   @media (max-width:419px) {
+     h1 {
+       font-size: 1.9rem
+     }
+ 
+     .theme-default-content div[class*=language-] {
+       margin: .85rem -1.5rem;
+       border-radius: 0
+     }
+   }
+ 
+   @-webkit-keyframes nprogress-spinner {
+     0% {
+       transform: rotate(0deg)
+     }
+ 
+     to {
+       transform: rotate(1turn)
+     }
+   }
+ 
+   @keyframes nprogress-spinner {
+     0% {
+       transform: rotate(0deg)
+     }
+ 
+     to {
+       transform: rotate(1turn)
+     }
+   }
+ 
+   .icon.outbound {
+     color: #aaa;
+     display: inline-block;
+     vertical-align: middle;
+     position: relative;
+     top: -1px
+   }
+ 
+   .sr-only {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     padding: 0;
+     margin: -1px;
+     overflow: hidden;
+     clip: rect(0, 0, 0, 0);
+     white-space: nowrap;
+     border-width: 0
+   }
+ 
+   .search-box {
+     display: inline-block;
+     position: relative;
+     margin-right: 1rem
+   }
+ 
+   .search-box input {
+     cursor: text;
+     width: 10rem;
+     height: 2rem;
+     color: #4e6e8e;
+     display: inline-block;
+     border: 1px solid #cfd4db;
+     border-radius: 2rem;
+     font-size: .9rem;
+     line-height: 2rem;
+     padding: 0 .5rem 0 2rem;
+     outline: none;
+     transition: all .2s ease;
+     background: #fff url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEzIj48ZyBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iI2FhYSIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTExLjI5IDExLjcxbC00LTQiLz48Y2lyY2xlIGN4PSI1IiBjeT0iNSIgcj0iNCIvPjwvZz48L3N2Zz4K).6rem .5rem no-repeat;
+     background-size: 1rem
+   }
+ 
+   .search-box input:focus {
+     cursor: auto;
+     border-color: #3eaf7c
+   }
+ 
+   @media (max-width:959px) {
+     .search-box input {
+       cursor: pointer;
+       width: 0;
+       border-color: transparent;
+       position: relative
+     }
+ 
+     .search-box input:focus {
+       cursor: text;
+       left: 0;
+       width: 10rem
+     }
+   }
+ 
+   @media (-ms-high-contrast:none) {
+     .search-box input {
+       height: 2rem
+     }
+   }
+ 
+   @media (max-width:719px) {
+     .search-box {
+       margin-right: 0
+     }
+ 
+     .search-box input {
+       left: 1rem
+     }
+   }
+ 
+   @media (max-width:419px) {
+     .search-box input:focus {
+       width: 8rem
+     }
+   }
+ 
+   .sidebar-button .icon {
+     display: block;
+     width: 1.25rem;
+     height: 1.25rem
+   }
+ 
+   .nav-links {
+     display: inline-block
+   }
+ 
+   .nav-links a {
+     line-height: 1.4rem;
+     color: inherit
+   }
+ 
+   .nav-links a.router-link-active,
+   .nav-links a:hover {
+     color: #3eaf7c
+   }
+ 
+   .nav-links .nav-item {
+     position: relative;
+     display: inline-block;
+     margin-left: 1.5rem;
+     line-height: 2rem
+   }
+ 
+   .nav-links .nav-item:first-child {
+     margin-left: 0
+   }
+ 
+   .nav-links .repo-link {
+     margin-left: 1.5rem
+   }
+ 
+   @media (max-width:719px) {
+ 
+     .nav-links .nav-item,
+     .nav-links .repo-link {
+       margin-left: 0
+     }
+   }
+ 
+   @media (min-width:719px) {
+ 
+     .nav-links a.router-link-active,
+     .nav-links a:hover {
+       color: #2c3e50
+     }
+ 
+     .nav-item>a:not(.external).router-link-active,
+     .nav-item>a:not(.external):hover {
+       margin-bottom: -2px;
+       border-bottom: 2px solid #46bd87
+     }
+   }
+ 
+   .navbar {
+     padding: .7rem 1.5rem;
+     line-height: 2.2rem
+   }
+ 
+   .navbar a,
+   .navbar span {
+     display: inline-block
+   }
+ 
+   .navbar .site-name {
+     font-size: 1.3rem;
+     font-weight: 600;
+     color: #2c3e50;
+     position: relative
+   }
+ 
+   .navbar .links {
+     padding-left: 1.5rem;
+     box-sizing: border-box;
+     background-color: #fff;
+     white-space: nowrap;
+     font-size: .9rem;
+     position: absolute;
+     right: 1.5rem;
+     top: .7rem;
+     display: flex
+   }
+ 
+   .navbar .links .search-box {
+     flex: 0 0 auto;
+     vertical-align: top
+   }
+ 
+   @media (max-width:719px) {
+     .navbar {
+       padding-left: 4rem
+     }
+ 
+     .navbar .can-hide {
+       display: none
+     }
+ 
+     .navbar .links {
+       padding-left: 1.5rem
+     }
+ 
+     .navbar .site-name {
+       width: calc(100vw - 9.4rem);
+       overflow: hidden;
+       white-space: nowrap;
+       text-overflow: ellipsis
+     }
+   }
+ 
+   .page-edit {
+     max-width: 740px;
+     margin: 0 auto;
+     padding: 2rem 2.5rem
+   }
+ 
+   @media (max-width:959px) {
+     .page-edit {
+       padding: 2rem
+     }
+   }
+ 
+   @media (max-width:419px) {
+     .page-edit {
+       padding: 1.5rem
+     }
+   }
+ 
+   .page-edit {
+     padding-top: 1rem;
+     padding-bottom: 1rem;
+     overflow: auto
+   }
+ 
+   .page-edit .edit-link {
+     display: inline-block
+   }
+ 
+   .page-edit .edit-link a {
+     color: #4e6e8e;
+     margin-right: .25rem
+   }
+ 
+   @media (max-width:719px) {
+     .page-edit .edit-link {
+       margin-bottom: .5rem
+     }
+   }
+ 
+   .page-nav {
+     max-width: 740px;
+     margin: 0 auto;
+     padding: 2rem 2.5rem
+   }
+ 
+   @media (max-width:959px) {
+     .page-nav {
+       padding: 2rem
+     }
+   }
+ 
+   @media (max-width:419px) {
+     .page-nav {
+       padding: 1.5rem
+     }
+   }
+ 
+   .page-nav {
+     padding-top: 1rem;
+     padding-bottom: 0
+   }
+ 
+   .page-nav .inner {
+     min-height: 2rem;
+     margin-top: 0;
+     border-top: 1px solid #eaecef;
+     padding-top: 1rem;
+     overflow: auto
+   }
+ 
+   .page-nav .next {
+     float: right
+   }
+ 
+   .page {
+     padding-bottom: 2rem;
+     display: block
+   }
+ 
+   .sidebar .sidebar-sub-headers {
+     padding-left: 1rem;
+     font-size: .95em
+   }
+ 
+   a.sidebar-link {
+     font-size: 1em;
+     font-weight: 400;
+     color: #2c3e50;
+     border-left: .25rem solid transparent;
+     padding: .35rem 1rem .35rem 1.25rem;
+     line-height: 1.4;
+     width: 100%;
+     box-sizing: border-box
+   }
+ 
+   a.sidebar-link:hover {
+     color: #3eaf7c
+   }
+ 
+   a.sidebar-link.active {
+     color: #3eaf7c;
+     border-left-color: #3eaf7c
+   }
+ 
+   .sidebar-sub-headers a.sidebar-link {
+     padding-top: .25rem;
+     padding-bottom: .25rem;
+     border-left: none
+   }
+ 
+   .sidebar-sub-headers a.sidebar-link.active {
+     font-weight: 500
+   }
+ 
+   .sidebar ul {
+     padding: 0;
+     margin: 0;
+     list-style-type: none
+   }
+ 
+   .sidebar a {
+     display: inline-block
+   }
+ 
+   .sidebar>.sidebar-links {
+     padding: 1.5rem 0
+   }
+ 
+   .sidebar>.sidebar-links>li>a.sidebar-link {
+     font-size: 1.1em;
+     line-height: 1.7;
+     font-weight: 700
+   }
+ 
+   .sidebar>.sidebar-links>li:not(:first-child) {
+     margin-top: .75rem
+   }
+ 
+   @media (max-width:719px) {
+     .sidebar>.sidebar-links {
+       padding: 1rem 0
+     }
+   }
+ 
+   html,
+   * {
+     -webkit-user-select: text !important;
+     -moz-user-select: text !important;
+     user-select: text !important;
+     -ms-user-select: text !important
+   }
+ 
+   #google_translate_element {
+     left: 0;
+     transform: translateX(-85%)
+   }
+ 
+   .recoverPage {
+     left: 0;
+     transform: translateX(-73%)
+   }
+ 
+   @media handheld,
+   only screen and (max-width:768px) {
+     .recoverPage {
+       transform: translateX(0)
+     }
+   }
+ 
+   html,
+   body {
+     top: 0 !important
+   }
+ 
+   #google_translate_element {
+     position: fixed;
+     bottom: 30px;
+     height: 21px;
+     border-radius: 11px;
+     z-index: 10000000;
+     overflow: hidden;
+     box-shadow: 1px 1px 3px 0#888;
+     opacity: .5;
+     transition: all .3s
+   }
+ 
+   .recoverPage {
+     width: 4em;
+     background-color: #fff;
+     position: fixed;
+     z-index: 10000000;
+     bottom: 60px;
+     user-select: none;
+     text-align: center;
+     font-size: small;
+     line-height: 2em;
+     border-radius: 1em;
+     box-shadow: 1px 1px 3px 0#888;
+     opacity: .5;
+     transition: all .3s
+   }
+ 
+   #google_translate_element:hover,
+   .recoverPage:hover {
+     opacity: 1;
+     transform: translateX(0)
+   }
+ 
+   .recoverPage:active {
+     box-shadow: 1px 1px 3px 0#888 inset
+   }
+ 
+   @media handheld,
+   only screen and (max-width:768px) {
+     #google_translate_element {
+       width: 104px
+     }
+ 
+     .recoverPage {
+       width: 1.5em;
+       line-height: 1.5em
+     }
+   }
+ 
+   .goog-te-menu-frame {
+     -moz-box-shadow: 0 3px 8px 2px #999999;
+     -webkit-box-shadow: 0 3px 8px 2px #999999
+   }
+ 
+   @keyframes goog-te-spinner-rotator {
+     0% {
+       transform: rotate(0deg)
+     }
+ 
+     100% {
+       transform: rotate(270deg)
+     }
+   }
+ 
+   @keyframes goog-te-spinner-dash {
+     0% {
+       stroke-dashoffset: 187
+     }
+ 
+     50% {
+       stroke-dashoffset: 46.75;
+       transform: rotate(135deg)
+     }
+ 
+     100% {
+       stroke-dashoffset: 187;
+       transform: rotate(450deg)
+     }
+   }
+ 
+   .goog-te-menu-frame {
+     z-index: 10000002;
+     position: fixed;
+     border: none;
+     -moz-box-shadow: 0 3px 8px 2px #999999;
+     -webkit-box-shadow: 0 3px 8px 2px #999999;
+     box-shadow: 0 3px 8px 2px #999999
+   }
+ 
+   .goog-te-gadget {
+     font-family: arial;
+     font-size: 11px;
+     color: #666;
+     white-space: nowrap
+   }
+ 
+   .goog-te-spinner-pos {
+     z-index: 1000;
+     position: fixed;
+     transition-delay: 0.6s;
+     left: -1000px;
+     top: -1000px
+   }
+ 
+   .goog-te-spinner-animation {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 104px;
+     height: 104px;
+     border-radius: 50px;
+     background: #fff url(data:image/png;base64,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)50% 50%no-repeat;
+     transition: all 0.6s ease-in-out;
+     transform: scale(0.4);
+     opacity: 0
+   }
+ 
+   .goog-te-spinner {
+     margin: 2px 0 0 2px;
+     animation: goog-te-spinner-rotator 1.4s linear infinite
+   }
+ 
+   @keyframes goog-te-spinner-rotator {
+     0% {
+       transform: rotate(0deg)
+     }
+ 
+     100% {
+       transform: rotate(270deg)
+     }
+   }
+ 
+   .goog-te-spinner-path {
+     stroke-dasharray: 187;
+     stroke-dashoffset: 0;
+     stroke: #4285f4;
+     transform-origin: center;
+     animation: goog-te-spinner-dash 1.4s ease-in-out infinite
+   }
+ 
+   @keyframes goog-te-spinner-dash {
+     0% {
+       stroke-dashoffset: 187
+     }
+ 
+     50% {
+       stroke-dashoffset: 46.75;
+       transform: rotate(135deg)
+     }
+ 
+     100% {
+       stroke-dashoffset: 187;
+       transform: rotate(450deg)
+     }
+   }
+ </style>
+ <meta name="description" content="Node.js global native keyboard and mouse listener.">
+ <style>
+   .sf-hidden {
+     display: none !important
+   }
+ </style>
+ <link rel="canonical" href="https://wilix-team.github.io/iohook/usage.html#generic-node-application">
+ <meta http-equiv="content-security-policy" content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;">
+ <style>
+   img[src="data:,"],
+   source[src="data:,"] {
+     display: none !important
+   }
+ </style>
+ <style>html, * {-webkit-user-select:text!important; -moz-user-select:text!important; user-select:text!important; -ms-user-select:text!important; -khtml-user-select:text!important;}</style><style id="1.q0ewnnfke1f">
+       #google_translate_element {
+         left: 0;
+         transform: translateX(-85%);
+       }
+       .recoverPage {
+         left: 0;
+         transform: translateX(-73%);
+       }
+       @media handheld, only screen and (max-width: 768px) {
+         .recoverPage {
+           transform: translateX(0);
+         }
+       }
+     </style><style id="1.w02qpjse87">
+       #goog-gt-tt {
+         visibility: hidden!important;
+         display: none!important;
+       }
+       .goog-text-highlight {
+         background-color: inherit!important;
+         box-shadow: 0 0 0 0 transparent!important;
+       }
+     </style><style id="1.qm544frzcq">
+       html,body{
+         top: 0!important;
+       }
+       #google_translate_element {
+         position: fixed;
+         bottom: 30px;
+         height: 21px;
+         border-radius: 11px;
+         z-index: 10000000;
+         overflow: hidden;
+         box-shadow: 1px 1px 3px 0 #888;
+         opacity: .5;
+         transition: all .3s;
+       }
+       #google_translate_element .goog-te-gadget-simple {
+         border: 0;
+       }
+       #google_translate_element .goog-te-gadget-simple span {
+         margin-right: 0;
+         border-radius: 11px;
+       }
+       .goog-te-banner-frame.skiptranslate {
+         display: none;
+       }
+       #lb {
+         display: inline-block;
+       }
+       .recoverPage {
+         width: 4em;
+         background-color: #fff;
+         position: fixed;
+         z-index: 10000000;
+         bottom: 60px;
+         user-select: none;
+         text-align: center;
+         font-size: small;
+         line-height: 2em;
+         border-radius: 1em;
+         box-shadow: 1px 1px 3px 0 #888;
+         opacity: .5;
+         transition: all .3s;
+       }
+       #google_translate_element:hover, .recoverPage:hover {
+         opacity: 1;
+         transform: translateX(0);
+       }
+       .recoverPage:active {
+         box-shadow: 1px 1px 3px 0 #888 inset;
+       }
+       #google_translate_element .goog-te-gadget-simple {
+         width: 100%;
+       }
+       @media handheld, only screen and (max-width: 768px) {
+         #google_translate_element {
+           width: 104px;
+         }
+         #google_translate_element .goog-te-combo {
+           margin: 0;
+           padding-top: 2px;
+           border: none;
+         }
+         .recoverPage {
+           width: 1.5em;
+           line-height: 1.5em;
+         }
+       }
+     </style><script>
+       function googleTranslateElementInit() {
+         new google.translate.TranslateElement(
+           {
+             pageLanguage: 'auto',
+             //包括的语言，中文简体，中文繁体，英语，日语，俄语
+             includedLanguages: 'zh-CN,zh-TW,en,ja,ru',
+             /*
+              * 0，原生select，并且谷歌logo显示在按钮下方。
+              * 1，原生select，并且谷歌logo显示在右侧。
+              * 2，完全展开语言列表，适合pc。
+              */
+             layout: /mobile/i.test(navigator.userAgent) ? 0 : 2
+           },
+           'google_translate_element'
+         )
+         // 清除图片的请求，加快访问速度
+         let img = [].slice.call(document.querySelectorAll('#goog-gt-tt img,#google_translate_element img'))
+         img.forEach(function (v) {
+           const a = v
+           a.src = ''
+           let b = a.outerHTML.replace(/<img(.*?)>/, () => {
+             return '<span id="lb"' + RegExp.$1 + '></span>'
+           })
+           const c = document.createElement('div')
+           c.innerHTML = b
+           a.parentNode.insertBefore(c.children[0], a.parentNode.children[0])
+           a.remove()
+         })
+         const recoverPage = document.createElement('div')
+         recoverPage.setAttribute('class', 'notranslate recoverPage')
+         recoverPage.innerText = '原'
+         document.body.appendChild(recoverPage)
+         // 点击恢复原网页
+         recoverPage.onclick = () => {
+           const phoneRecoverIframe = document.getElementById(':1.container') // 移动端
+           const PCRecoverIframe = document.getElementById(':2.container') // PC端
+           if (phoneRecoverIframe) {
+             const recoverDocument = phoneRecoverIframe.contentWindow.document
+             recoverDocument.getElementById(':1.restore').click()
+           } else if (PCRecoverIframe) {
+             const recoverDocument = PCRecoverIframe.contentWindow.document
+             recoverDocument.getElementById(':2.restore').click()
+           }
+         }
+       }
+     </script><script src="https://translate.google.cn/translate_a/element.js?&amp;cb=googleTranslateElementInit"></script></head>
+ 
+ <body _c_t_common="1" style="position:relative;min-height:100%;top:0px">
+   <div id="app">
+     <div class="theme-container">
+       <header class="navbar">
+         <div class="sidebar-button sf-hidden"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
+             <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z">
+             </path>
+           </svg></div> <a href="https://wilix-team.github.io/iohook/" class="home-link router-link-active"> <span class="site-name">iohook</span></a>
+         <div class="links" style="max-width:1789px">
+           <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value="" placeholder=""> </div>
+           <nav class="nav-links can-hide">
+             <div class="nav-item"><a href="https://wilix-team.github.io/iohook/" class="nav-link">
+                 Guide
+               </a></div>
+             <div class="nav-item"><a href="https://www.npmjs.com/package/iohook" target="_blank" rel="noopener noreferrer" class="nav-link external">
+                 NPM
+                 <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                     <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z">
+                     </path>
+                     <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9">
+                     </polygon>
+                   </svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/wilix-team/iohook" target="_blank" rel="noopener noreferrer" class="repo-link">
+               GitHub
+               <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                   <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z">
+                   </path>
+                   <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9">
+                   </polygon>
+                 </svg> <span class="sr-only">(opens new window)</span></span></a>
+           </nav>
+         </div>
+       </header>
+       <div class="sidebar-mask sf-hidden"></div>
+       <aside class="sidebar">
+         <nav class="nav-links sf-hidden"> </nav>
+         <ul class="sidebar-links">
+           <li><a href="https://wilix-team.github.io/iohook/" aria-current="page" class="sidebar-link">Home</a>
+           </li><li><a href="https://wilix-team.github.io/iohook/os-support.html" class="sidebar-link">OS Support</a>
+           </li><li><a href="https://wilix-team.github.io/iohook/installation.html" class="sidebar-link">Installation</a>
+           </li><li><a href="https://wilix-team.github.io/iohook/usage.html" class="active sidebar-link" aria-current="page">Usage</a>
+             <ul class="sidebar-sub-headers">
+               <li class="sidebar-sub-header"><a href="#electron" class="sidebar-link">Electron</a>
+               </li><li class="sidebar-sub-header"><a href="#generic-node-application" class="active sidebar-link" aria-current="page">Generic Node application</a>
+               </li><li class="sidebar-sub-header"><a href="#available-events" class="sidebar-link">Available events</a>
+                 <ul class="sidebar-sub-headers">
+                   <li class="sidebar-sub-header"><a href="#keydown" class="sidebar-link">keydown</a>
+                   </li><li class="sidebar-sub-header"><a href="#keyup" class="sidebar-link">keyup</a>
+                   </li><li class="sidebar-sub-header"><a href="#mouseclick" class="sidebar-link">mouseclick</a>
+                   </li><li class="sidebar-sub-header"><a href="#mousedown" class="sidebar-link">mousedown</a>
+                   </li><li class="sidebar-sub-header"><a href="#mouseup" class="sidebar-link">mouseup</a>
+                   </li><li class="sidebar-sub-header"><a href="#mousemove" class="sidebar-link">mousemove</a>
+                   </li><li class="sidebar-sub-header"><a href="#mousedrag" class="sidebar-link">mousedrag</a>
+                   </li><li class="sidebar-sub-header"><a href="#mousewheel" class="sidebar-link">mousewheel</a>
+                 </li></ul>
+               </li><li class="sidebar-sub-header"><a href="#shortcuts" class="sidebar-link">Shortcuts</a>
+                 <ul class="sidebar-sub-headers">
+                   <li class="sidebar-sub-header"><a href="#registershortcut-keys-callback-releasecallback" class="sidebar-link">registerShortcut(keys, callback, releaseCallback?)</a>
+                   </li><li class="sidebar-sub-header"><a href="#unregistershortcut-shortcutid" class="sidebar-link">unregisterShortcut(shortcutId)</a>
+                   </li><li class="sidebar-sub-header"><a href="#unregistershortcutbykeys-keys" class="sidebar-link">unregisterShortcutByKeys(keys)</a>
+                   </li><li class="sidebar-sub-header"><a href="#unregisterallshortcuts" class="sidebar-link">unregisterAllShortcuts()</a>
+                   </li><li class="sidebar-sub-header"><a href="#userawcode-using" class="sidebar-link">useRawcode(using)</a>
+                   </li><li class="sidebar-sub-header"><a href="#disableclickpropagation" class="sidebar-link">disableClickPropagation()</a>
+                   </li><li class="sidebar-sub-header"><a href="#enableclickpropagation" class="sidebar-link">enableClickPropagation()</a>
+                 </li></ul>
+             </li></ul>
+           </li><li><a href="https://wilix-team.github.io/iohook/manual-build.html" class="sidebar-link">Manual Build</a>
+           </li><li><a href="https://wilix-team.github.io/iohook/faq.html" class="sidebar-link">FAQ</a>
+         </li></ul>
+       </aside>
+       <main class="page">
+         <div class="theme-default-content content__default">
+           <h1 id="usage"><a href="#usage" class="header-anchor">#</a> Usage</h1>
+           <h2 id="electron"><a href="#electron" class="header-anchor">#</a> Electron</h2>
+           <p>Before installing this module, you will need to set a runtime version in your <code>package.json</code>.
+           </p>
+           <p>When developing with webpack, you will need the Node.js runtime.</p>
+           <p>In production, your Electron app will need the Electron version.</p>
+           <p>Checkout your ABI for <a href="https://nodejs.org/en/download/releases/" target="_blank" rel="noopener noreferrer">node.js<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                   <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z">
+                   </path>
+                   <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9">
+                   </polygon>
+                 </svg> <span class="sr-only">(opens new window)</span></span></a> or <a href="https://www.npmjs.com/package/electron-abi" target="_blank" rel="noopener noreferrer">electron<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                   <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z">
+                   </path>
+                   <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9">
+                   </polygon>
+                 </svg> <span class="sr-only">(opens new window)</span></span></a>. The example below uses Node.js v12.X
+             and Electron v11.X.</p>
+           <div class="language-json extra-class">
+             <pre class="language-json notranslate"><code><span class="token property">"iohook"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+   <span class="token property">"targets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+     <span class="token string">"node-72"</span><span class="token punctuation">,</span>
+     <span class="token string">"electron-85"</span>
+   <span class="token punctuation">]</span><span class="token punctuation">,</span>
+   <span class="token property">"platforms"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+     <span class="token string">"win32"</span><span class="token punctuation">,</span>
+     <span class="token string">"darwin"</span><span class="token punctuation">,</span>
+     <span class="token string">"linux"</span>
+   <span class="token punctuation">]</span><span class="token punctuation">,</span>
+   <span class="token property">"arches"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+     <span class="token string">"x64"</span><span class="token punctuation">,</span>
+     <span class="token string">"ia32"</span>
+   <span class="token punctuation">]</span>
+ <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <p>Or you can specify targets as objects:</p>
+           <div class="language-json extra-class">
+             <pre class="language-json notranslate"><code><span class="token property">"iohook"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+   <span class="token property">"targets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+     <span class="token punctuation">{</span>
+       <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"node"</span><span class="token punctuation">,</span>
+       <span class="token property">"abi"</span><span class="token operator">:</span> <span class="token string">"72"</span><span class="token punctuation">,</span>
+       <span class="token property">"platform"</span><span class="token operator">:</span> <span class="token string">"darwin"</span><span class="token punctuation">,</span>
+       <span class="token property">"arch"</span><span class="token operator">:</span> <span class="token string">"x64"</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+     <span class="token punctuation">{</span>
+       <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"electron"</span><span class="token punctuation">,</span>
+       <span class="token property">"abi"</span><span class="token operator">:</span> <span class="token string">"85"</span><span class="token punctuation">,</span>
+       <span class="token property">"platform"</span><span class="token operator">:</span> <span class="token string">"win32"</span><span class="token punctuation">,</span>
+       <span class="token property">"arch"</span><span class="token operator">:</span> <span class="token string">"ia32"</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">]</span><span class="token punctuation">,</span>
+ </code></pre>
+           </div>
+           <div class="custom-block tip">
+             <p class="custom-block-title">TIP</p>
+             <p>if you use a two-package.json structure, add this to application package.json.</p>
+           </div>
+           <h2 id="generic-node-application"><a href="#generic-node-application" class="header-anchor">#</a> Generic Node
+             application</h2>
+           <p>Here is a simple example :</p>
+           <div class="language-javascript extra-class">
+             <pre class="language-javascript notranslate"><code><span class="token string">'use strict'</span><span class="token punctuation">;</span>
+ 
+ <span class="token keyword">const</span> ioHook <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'iohook'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ ioHook<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { type: 'mousemove', x: 700, y: 400 }</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ <span class="token comment">// Register and start hook</span>
+ ioHook<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ <span class="token comment">// Alternatively, pass true to start in DEBUG mode.</span>
+ ioHook<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ <span class="token comment">// False to disable DEBUG. Cleaner terminal output.</span>
+ ioHook<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h2 id="available-events"><a href="#available-events" class="header-anchor">#</a> Available events</h2>
+           <h3 id="keydown"><a href="#keydown" class="header-anchor">#</a> keydown</h3>
+           <p>Triggered when user presses a key.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span>
+   keycode<span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span>
+   rawcode<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+   type<span class="token operator">:</span> <span class="token string">'keydown'</span><span class="token punctuation">,</span>
+   altKey<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+   shiftKey<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+   ctrlKey<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+   metaKey<span class="token operator">:</span> <span class="token boolean">false</span>
+ <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="keyup"><a href="#keyup" class="header-anchor">#</a> keyup</h3>
+           <p>Triggered when user releases a key.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span>
+   keycode<span class="token operator">:</span> <span class="token number">19</span><span class="token punctuation">,</span>
+   rawcode<span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+   type<span class="token operator">:</span> <span class="token string">'keyup'</span><span class="token punctuation">,</span>
+   altKey<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+   shiftKey<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+   ctrlKey<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+   metaKey<span class="token operator">:</span> <span class="token boolean">false</span>
+ <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="mouseclick"><a href="#mouseclick" class="header-anchor">#</a> mouseclick</h3>
+           <p>Triggered when user clicks a mouse button.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span> button<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> clicks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">545</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">696</span><span class="token punctuation">,</span> type<span class="token operator">:</span> <span class="token string">'mouseclick'</span> <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="mousedown"><a href="#mousedown" class="header-anchor">#</a> mousedown</h3>
+           <p>Triggered when user clicks a mouse button.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span> button<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> clicks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">545</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">696</span><span class="token punctuation">,</span> type<span class="token operator">:</span> <span class="token string">'mousedown'</span> <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="mouseup"><a href="#mouseup" class="header-anchor">#</a> mouseup</h3>
+           <p>Triggered when user releases a mouse button.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span> button<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> clicks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">545</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">696</span><span class="token punctuation">,</span> type<span class="token operator">:</span> <span class="token string">'mouseup'</span> <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="mousemove"><a href="#mousemove" class="header-anchor">#</a> mousemove</h3>
+           <p>Triggered when user moves the mouse.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span> button<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> clicks<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">521</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">737</span><span class="token punctuation">,</span> type<span class="token operator">:</span> <span class="token string">'mousemove'</span> <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="mousedrag"><a href="#mousedrag" class="header-anchor">#</a> mousedrag</h3>
+           <p>Triggered when user clicks and drags something.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span> button<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> clicks<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">373</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">683</span><span class="token punctuation">,</span> type<span class="token operator">:</span> <span class="token string">'mousedrag'</span> <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h3 id="mousewheel"><a href="#mousewheel" class="header-anchor">#</a> mousewheel</h3>
+           <p>Triggered when user uses the mouse wheel.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token punctuation">{</span> amount<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> clicks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> direction<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> rotation<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> type<span class="token operator">:</span> <span class="token string">'mousewheel'</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">466</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">683</span> <span class="token punctuation">}</span>
+ </code></pre>
+           </div>
+           <h2 id="shortcuts"><a href="#shortcuts" class="header-anchor">#</a> Shortcuts</h2>
+           <p>You can register global shortcuts.</p>
+           <div class="custom-block tip">
+             <p class="custom-block-title">NOTE</p>
+             <p>When a shortcut is caught, keyup/keydown events still emit events. It means, that if you register a keyup
+               AND shortcut for <code>ALT+T</code>, both events will be emited.</p>
+           </div>
+           <h3 id="registershortcut-keys-callback-releasecallback"><a href="#registershortcut-keys-callback-releasecallback" class="header-anchor">#</a> registerShortcut(keys, callback, releaseCallback?)</h3>
+           <p>In the next example we register CTRL+F7 shortcut (in MacOS. For other OSes, the keycodes could be
+             different).</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token keyword">const</span> id <span class="token operator">=</span> ioHook<span class="token punctuation">.</span><span class="token function">registerShortcut</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">keys</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Shortcut called with keys:'</span><span class="token punctuation">,</span> keys<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <p>We can also specify a callback to run when our shortcut has been released by specifying a third function
+             argument.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code><span class="token keyword">const</span> id <span class="token operator">=</span> ioHook<span class="token punctuation">.</span><span class="token function">registerShortcut</span><span class="token punctuation">(</span>
+   <span class="token punctuation">[</span><span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+   <span class="token punctuation">(</span><span class="token parameter">keys</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Shortcut called with keys:'</span><span class="token punctuation">,</span> keys<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">(</span><span class="token parameter">keys</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Shortcut has been released!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h3 id="unregistershortcut-shortcutid"><a href="#unregistershortcut-shortcutid" class="header-anchor">#</a>
+             unregisterShortcut(shortcutId)</h3>
+           <p>You can unregister shortcut by using shortcutId returned by <code>registerShortcut()</code>.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code>ioHook<span class="token punctuation">.</span><span class="token function">unregisterShortcut</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h3 id="unregistershortcutbykeys-keys"><a href="#unregistershortcutbykeys-keys" class="header-anchor">#</a>
+             unregisterShortcutByKeys(keys)</h3>
+           <p>You can unregister shortcut by using the keys codes passed to <code>registerShortcut()</code>. Passing
+             codes in the same order as during registration is not required.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code>ioHook<span class="token punctuation">.</span><span class="token function">unregisterShortcutByKeys</span><span class="token punctuation">(</span>keys<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h3 id="unregisterallshortcuts"><a href="#unregisterallshortcuts" class="header-anchor">#</a>
+             unregisterAllShortcuts()</h3>
+           <p>You can also unregister all shortcuts.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code>ioHook<span class="token punctuation">.</span><span class="token function">unregisterAllShortcuts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h3 id="userawcode-using"><a href="#userawcode-using" class="header-anchor">#</a> useRawcode(using)</h3>
+           <p>Some libraries, such as <a href="https://wilix-team.github.io/iohook/usage.html">Mousetrap</a> will emit
+             keyboard events that contain
+             a <code>rawcode</code> value. This is a separate, but equally valid, representation of
+             the key that was pressed. However by default iohook instead uses an event's
+             <code>keycode</code> field to determine which key was pressed. If these key codes do not
+             line up, your shortcut will not be detected as pressed.
+           </p>
+           <p>To tell iohook to use the <code>rawcode</code> value instead, simply do so before
+             starting iohook.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code>iohook<span class="token punctuation">.</span><span class="token function">useRawcode</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ iohook<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h3 id="disableclickpropagation"><a href="#disableclickpropagation" class="header-anchor">#</a>
+             disableClickPropagation()</h3>
+           <p>You can disable mouse click event propagation. Click events are captured and emitted but not propagated to
+             the window.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code>ioHook<span class="token punctuation">.</span><span class="token function">disableClickPropagation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+           <h3 id="enableclickpropagation"><a href="#enableclickpropagation" class="header-anchor">#</a>
+             enableClickPropagation()</h3>
+           <p>You can enable mouse click event propagation if it's disabled. Click event are propagated by default.</p>
+           <div class="language-js extra-class">
+             <pre class="language-js notranslate"><code>ioHook<span class="token punctuation">.</span><span class="token function">enableClickPropagation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ </code></pre>
+           </div>
+         </div>
+         <footer class="page-edit">
+           <div class="edit-link"><a href="https://github.com/wilix-team/iohook/edit/master/docs/usage.md" target="_blank" rel="noopener noreferrer">Edit this page on GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                 <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z">
+                 </path>
+                 <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9">
+                 </polygon>
+               </svg> <span class="sr-only">(opens new window)</span></span></div>
+         </footer>
+         <div class="page-nav">
+           <p class="inner"><span class="prev">
+               ←
+               <a href="https://wilix-team.github.io/iohook/installation.html" class="prev">
+                 Home
+               </a></span> <span class="next"><a href="https://wilix-team.github.io/iohook/manual-build.html">
+                 OS Support
+               </a>
+               →
+             </span></p>
+         </div>
+       </main>
+     </div>
+     <div class="global-ui"></div>
+   </div>
+</body></html>

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* 移除滚动条 */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* 移除页面默认特性 */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /*chrome-tabs */
+    --StatusBarHeight: 46px
+}
+
+#app {
+    margin-top: var(--StatusBarHeight);
+    width: 100vw;
+    height: calc(100vh - var(--StatusBarHeight));
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+p {
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+a,
+svg,
+img,
+i {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+[hide],.hide,.Hide{
+    display:none !important;
+}
+[show],.Show,.show{
+    display: inherit !important;
+}

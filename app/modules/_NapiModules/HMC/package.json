@@ -1,0 +1,6 @@
+{
+  "name": "HMC",
+  "version": "1.0.0",
+  "description": "win32API HM C++扩展",
+  "main": "HMC.js"
+}

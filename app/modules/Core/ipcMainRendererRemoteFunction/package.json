@@ -1,0 +1,6 @@
+{
+  "name": "ipcmain-renderer-remote-function",
+  "version": "1.0.0",
+  "description": "IPC跟主界面的交互脚本",
+  "main": "./ipcMainRenderer.js"
+}

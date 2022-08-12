@@ -1,0 +1,122 @@
+body {
+    background: #F3F3F8;
+
+}
+.Top_BtnList{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 15px;
+}
+.Top_BtnList .Icon{
+    min-width: 49px;
+    min-height: 49px;
+    max-width: 49px;
+    border-radius: 13px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.Top_BtnList .Btn{
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.Top_BtnList .Btn:hover{
+    opacity: .9;
+}
+.Top_BtnList .Btn:active{
+    opacity: 1;
+}
+.Top_BtnList .Name{
+    text-align: center;
+    letter-spacing: 0.3px;
+    font-size: 12px;
+    color: #818197;
+    padding-top: 5px;
+}
+.gg-ericsson {
+    position: relative;
+    transform: scale(var(--ggs,.7))!important;
+    width: 18px!important;
+    height: 18px!important;
+}
+.EndFooter{
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+}
+.EndFooter .Btn{
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
+    background: linear-gradient(131.46deg,#F6F7FB 2.97%,rgba(246,247,251,.66) 150.02%);
+    height: 60px;
+    border: 1px solid #ededed;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 22%;
+    color:#5D5D9C;
+}
+.EndFooter .BtnSelect{
+    background: #22b07c1f;
+    color:rgb(34, 176, 125);
+    
+} 
+.MainFunctions{
+    height: calc(100% - 80px);
+    width: 100%;
+    margin-top: 25px;
+}
+._EvalPhotoshopScript{
+    display: flex;
+    overflow: hidden;
+    width: 63vw;
+    min-height: 19vh;
+    background: white;
+    border-radius: 28px;
+    color: #fff;
+    border: 1px solid rgb(235,235,235);
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.___Top_prompt{
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 99999;
+    top: 0px;
+
+}
+.Icon .gg-backspace{    margin-left: 6px;}

@@ -1,0 +1,19 @@
+{
+  "main": "./build.js",
+  "dependencies": {
+    "@nodegui/nodegui": "^0.53.0",
+    "babel-minify": "^0.5.2",
+    "clean-css": "^5.3.0",
+    "electron-prompt": "^1.7.0",
+    "esbuild": "^0.14.51",
+    "fswin": "^3.22.106",
+    "html-minifier": "^4.0.0",
+    "json-format": "^1.0.1",
+    "log4js": "^6.5.2",
+    "svgo": "^2.8.0",
+    "uglify-js": "^3.15.5"
+  },
+  "devDependencies": {
+    "@types/html-minifier": "^4.0.2"
+  }
+}
