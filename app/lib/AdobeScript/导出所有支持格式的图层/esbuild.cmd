@@ -1,0 +1,1 @@
+esbuild Bulid_卫衣通版.js --bundle --charset=utf8 --outfile=build.jsx --platform=node --target=chrome20  

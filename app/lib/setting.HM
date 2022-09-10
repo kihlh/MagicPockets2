@@ -1,0 +1,100 @@
+{
+	"UsersID": "",
+	"UsersName": "新任魔法师",
+	"GreetInfo":null,
+	"AskHou": "人生得意须尽欢，莫让金樽空对月",
+	"AskHouFrom":"KIIC:来自神奇口袋作者",
+	"UsershotImg":null,
+	"getwindow": {
+		"key": "alt+q",
+		"type": true,
+		"name": "显示窗口"
+	},
+	"window": {
+		"CloseToQuit":null,
+		"resize": {
+			"x": 421,
+			"y": 104,
+			"width": 1184,
+			"height": 825
+		}
+	},
+	"Note": {
+		"NoteCard": {
+			"RemindCard": {
+				"title": "所有美好正在奔赴而来...",
+				"info": "没有接近提醒时间的事件，建议添加，比如下班小助手，点餐小助手"
+			}
+		}
+	},
+	"Temperature": {
+		"reportDate": 1650445933566,
+		"adcode": "10000",
+		"city": "中国",
+		"province": "北京",
+		"reporttime": "2022-04-20 17:05:55",
+		"temperature": "00",
+		"weather": "晴",
+		"winddirection": "北",
+		"windpower": "≤3",
+		"WaarTakomst": [
+			{
+				"date": "2022-04-20",
+				"week": "3",
+				"dayweather": "晴",
+				"nightweather": "晴",
+				"daytemp": "00",
+				"nighttemp": "00",
+				"daywind": "北",
+				"nightwind": "北",
+				"daypower": "≤3",
+				"nightpower": "≤3",
+				"TimeInfoMaybe": "昨天"
+			},
+			{
+				"date": "2022-04-21",
+				"week": "4",
+				"dayweather": "晴",
+				"nightweather": "晴",
+				"daytemp": "00",
+				"nighttemp": "00",
+				"daywind": "南",
+				"nightwind": "南",
+				"daypower": "≤3",
+				"nightpower": "≤3",
+				"TimeInfoMaybe": "今天"
+			},
+			{
+				"date": "2022-04-22",
+				"week": "5",
+				"dayweather": "晴",
+				"nightweather": "晴",
+				"daytemp": "00",
+				"nighttemp": "00",
+				"daywind": "南",
+				"nightwind": "南",
+				"daypower": "≤3",
+				"nightpower": "≤3",
+				"TimeInfoMaybe": "明天"
+			},
+			{
+				"date": "2022-04-23",
+				"week": "6",
+				"dayweather": "晴",
+				"nightweather": "晴",
+				"daytemp": "00",
+				"nighttemp": "00",
+				"daywind": "南",
+				"nightwind": "南",
+				"daypower": "≤3",
+				"nightpower": "≤3",
+				"TimeInfoMaybe": "后天"
+			}
+		],
+		"direction": {
+			"power": "≤3",
+			"info": null,
+			"dpower": "几乎无风"
+		}
+	}
+}
